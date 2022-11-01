@@ -4,7 +4,6 @@ import {StyleSheet} from 'react-native'
 import {Ionicons} from 'react-native-vector-icons';
 import { RFValue } from 'react-native-responsive-fontsize';
 
-import ChooseSupermarket from '../screens/chooseSuperMarket';
 import ChooseThirst from '../screens/chooseThirst';
 import ScanningScreen from '../screens/scanningScreen';
 import ShoppingList from '../screens/shoppingList';
@@ -25,15 +24,12 @@ export default class BottomTab extends React.Component{
                         iconName = focused ? 'qr-code' : 'qr-code-outline'
                     } else if(route.name === 'ShoppingList'){
                         iconName = focused ? 'cart' : 'cart-sharp'
-                    } else if(route.name === 'ChooseSupermarket') {
-                        iconName = focused ? 'home' : 'home-outline'
                     }
                     return <Ionicons name={iconName} size={RFValue(30)} color={color} style={styles.icons} />
                 },
             })}
             activeColor={'#ee8249'}
             inactiveColor={'gray'}>
-                <Tab.Screen name='ChooseSupermarket' component={ChooseSupermarket}/>
                 <Tab.Screen name='ChooseThirst' component={ChooseThirst}/>
                 <Tab.Screen name='ScanningScreen' component={ScanningScreen}/>
                 <Tab.Screen name='ShoppingList' component={ShoppingList}/>
