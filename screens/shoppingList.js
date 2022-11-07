@@ -1,11 +1,13 @@
 import * as React from 'react';
 import {View, Text} from 'react-native';
 
+import AppTitle from '../components/AppHeader';
+
 export default class ShoppingList extends React.Component{
     render(){
         return(
             <View>
-                <Text>SHOPPING LIST SCREEN</Text>
+                <AppTitle/>
             </View>
         )
     }

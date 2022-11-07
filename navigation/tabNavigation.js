@@ -25,7 +25,7 @@ export default class BottomTab extends React.Component{
                     } else if(route.name === 'ShoppingList'){
                         iconName = focused ? 'cart' : 'cart-sharp'
                     }
-                    return <Ionicons name={iconName} size={RFValue(30)} color={color} style={styles.icons} />
+                    return <Ionicons name={iconName} size={RFValue(25)} color={color} style={styles.icons} />
                 },
             })}
             activeColor={'#ee8249'}

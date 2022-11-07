@@ -8,9 +8,11 @@ const Stack = createStackNavigator();
 export default class StackNavigator extends React.Component{
     render(){
         return(
-            <Stack.Navigator initialRouteName='Home'>
-                <Stack.Screen name='Home' component={TabNavigator}/>
-                <Stack.Screen name='Finish Shop' component={FinishShop}/>
+            <Stack.Navigator 
+            screenOptions={{headerShown: false}}
+            initialRouteName='Início'>
+                <Stack.Screen name='Início' component={TabNavigator}/>
+                <Stack.Screen name='Finalizar compra' component={FinishShop}/>
             </Stack.Navigator>
         )
     }

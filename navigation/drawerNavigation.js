@@ -12,11 +12,11 @@ export default class DrawerNavigator extends React.Component{
     render(){
         return(
             <Drawer.Navigator>
-                <Drawer.Screen name='Home' component={StackNavigator}/>
+                <Drawer.Screen name='Início' component={StackNavigator}/>
                 <Drawer.Screen name='Login' component={LoginScreen}/>
                 <Drawer.Screen name='Logout' component={LogoutScreen}/>
-                <Drawer.Screen name='Supermarket' component={ChooseSupermarket}/>
-                <Drawer.Screen name='User' component={UserScreen}/>
+                <Drawer.Screen name='Supermercado' component={ChooseSupermarket}/>
+                <Drawer.Screen name='Usuário' component={UserScreen}/>
             </Drawer.Navigator>
         )
     }
