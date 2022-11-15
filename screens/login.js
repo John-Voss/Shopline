@@ -1,37 +1,51 @@
 import * as React from 'react';
-import { StyleSheet, View, Button, SafeAreaView, Image, Text, TouchableOpacity, Platform, StatusBar, KeyboardAvoidingView, TextInput } from 'react-native';
+import { StyleSheet, View, Button, SafeAreaView, Image, Text, TouchableOpacity, Platform, StatusBar, KeyboardAvoidingView, TextInput, Alert } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import firebase from 'firebase';
+
 import AppTitle from '../components/AppHeader';
 
+// import db from '../config'
+
 export default class LoginScreen extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: '',
       password: '',
-      isUserExist: false
+      transaction: [],
     }
   }
 
-  createUser = (email, password) => {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        // Signed in 
-        var user = userCredential.user;
-        // ...
-      })
-      .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ..
-      });
+  signIn = (email, password) => {
+
+    if (this.state.email && this.state.password) {
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+            // Signed in 
+            var user = userCredential.user;
+            this.props.navigation.navigate('DrawerNavigator');
+            // ...
+          })
+          .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            Alert.alert('Error '+errorCode+' Email ou senha inválidos!')
+            // ..
+          });
+    } else {
+      Alert.alert(
+        'Error!',
+        'Todos os campos são obrigatórios!',
+        [{ text: 'Ok', onPress: () => console.log('OK PRECIONADO!') }],
+        { cancelable: false }
+      )
+
+    }
+
   }
-
-
-
 
   render() {
     const { email, password } = this.state;
@@ -48,6 +62,16 @@ export default class LoginScreen extends React.Component {
 
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
         <AppTitle />
+
+        <View style={styles.createCountContainer}>
+          <Text style={styles.lema}>Compre com Shopline</Text>
+
+          <Text style={styles.createCountText1}>Não tem uma conta?</Text>
+
+          <TouchableOpacity style={styles.createCountButton} onPress={() => this.props.navigation.navigate('CreateCount')}>
+            <Text style={styles.createCountText2}>Cadastre-se</Text>
+          </TouchableOpacity>
+        </View>
 
         <View style={styles.textInputContainer}>
           <Text style={styles.loginText}>Login</Text>
@@ -67,7 +91,7 @@ export default class LoginScreen extends React.Component {
           />
           <TouchableOpacity
             style={[styles.button, { marginTop: 20 }]}
-            onPress={() => this.createUser(email, password)}
+            onPress={() => this.signIn(this.state.email, this.state.password)}
           >
             <Text style={styles.buttonText}>Entrar</Text>
           </TouchableOpacity>
@@ -84,28 +108,11 @@ export default class LoginScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
   droidSafeArea: {
     marginTop: Platform.OS === "android" ? StatusBar.currentHeight : RFValue(35)
   },
-  // buttonContainer: {
-  //   flex: 0.3,
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  // },
-  // button: {
-  //   width: RFValue(250),
-  //   height: RFValue(50),
-  //   flexDirection: "row",
-  //   justifyContent: "space-evenly",
-  //   alignItems: "center",
-  //   borderRadius: RFValue(30),
-  //   backgroundColor: "white",
-  //   borderWidth: 5,
-  //   borderRadius: 40,
-  //   borderColor: 'black'
-  // },
   // googleIcon: {
   //   width: RFValue(30),
   //   height: RFValue(30),
@@ -115,22 +122,12 @@ const styles = StyleSheet.create({
   //   color: "black",
   //   fontSize: RFValue(20)
   // },
-  // cloudContainer: {
-  //   flex: 0.3
-  // },
-  // cloudImage: {
-  //   position: "absolute",
-  //   width: "100%",
-  //   resizeMode: "contain",
-  //   bottom: RFValue(-5)
-  // }
   imageContainer: {
-    flex: 0.1,
+    flex: 0.05,
     alignItems: 'center',
     alignSelf: 'center',
-    // marginBottom: 100,
     position: 'relative',
-    top: -370
+    top: RFValue(-240)
   },
   image: {
     width: 80,
@@ -149,6 +146,7 @@ const styles = StyleSheet.create({
     borderColor: '#000',
     borderRadius: 40,
     paddingTop: 20,
+    paddingBottom: 80
   },
   upperContainer: {
     flex: 0.5,
@@ -171,7 +169,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#FF6534",
     borderRadius: 15,
-    marginTop: 20
+    marginTop: 20,
+    // marginBottom: 20
   },
   buttonText: {
     fontSize: 24,
@@ -182,5 +181,39 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     padding: 20,
     color: '#A6A6A6'
+  },
+  createCountText1: {
+    fontSize: 23,
+    color: 'gray',
+    marginRight: 125
+  },
+  createCountContainer: {
+    width: '85%',
+    // marginLeft: RFValue(80),
+    marginBottom: 80,
+    marginTop: 20,
+    borderTopWidth: 4,
+    borderBottomWidth: 4,
+    borderTopColor: '#EBEBEB',
+    borderBottomColor: '#EBEBEB',
+    borderRadius: 10,
+    alignItems: 'center',
+    alignSelf: 'center',
+    padding: 30
+  },
+  lema: {
+    marginBottom: 10,
+    fontSize: 35,
+    alignSelf: 'center'
+  },
+  createCountText2: {
+    fontSize: 23,
+    fontWeight: 'bold',
+    color: 'orange'
+  },
+  createCountButton: {
+    width: '30%',
+    marginTop: -30,
+    marginRight: -240
   }
 })

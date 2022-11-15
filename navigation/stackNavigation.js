@@ -10,7 +10,7 @@ export default class StackNavigator extends React.Component{
         return(
             <Stack.Navigator 
             screenOptions={{headerShown: false}}
-            initialRouteName='Início'>
+            initialRouteName='início'>
                 <Stack.Screen name='Início' component={TabNavigator}/>
                 <Stack.Screen name='Finalizar compra' component={FinishShop}/>
             </Stack.Navigator>

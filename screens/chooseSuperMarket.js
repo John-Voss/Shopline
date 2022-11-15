@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     textContainer: {
         flex: 0.08,
         alignItems: 'center',
-        marginTop: -80
+        marginTop: -70
     },
     buttonContainer: {
         flex: 0.7,
