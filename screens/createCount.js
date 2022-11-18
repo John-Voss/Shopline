@@ -51,7 +51,7 @@ export default class CreateCount extends React.Component {
 
             await firebase
                 .database()
-                .ref(this.state.userId)
+                .ref('/users/'+this.state.userId)
                 .set(userData)
                 .then(function (snapshot) { });
             this.props.navigation.navigate('DrawerNavigator');

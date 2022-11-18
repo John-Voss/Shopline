@@ -4,12 +4,11 @@ import {StyleSheet} from 'react-native'
 import {Ionicons} from 'react-native-vector-icons';
 import { RFValue } from 'react-native-responsive-fontsize';
 
-import ChooseThirst from '../screens/chooseThirst';
 import ScanningScreen from '../screens/scanningScreen';
 import ShoppingList from '../screens/shoppingList';
 
 const Tab = createMaterialBottomTabNavigator();
-export default class BottomTab extends React.Component{
+export default class TabNavigator extends React.Component{
     render(){
         return(
             <Tab.Navigator 
@@ -18,9 +17,7 @@ export default class BottomTab extends React.Component{
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
                     var iconName;
-                    if (route.name === 'ChooseThirst') {
-                        iconName = focused ? 'location' : 'location-sharp'
-                    } else if (route.name === 'ScanningScreen') {
+                    if (route.name === 'ScanningScreen') {
                         iconName = focused ? 'qr-code' : 'qr-code-outline'
                     } else if(route.name === 'ShoppingList'){
                         iconName = focused ? 'cart' : 'cart-sharp'
@@ -30,7 +27,6 @@ export default class BottomTab extends React.Component{
             })}
             activeColor={'#ee8249'}
             inactiveColor={'gray'}>
-                <Tab.Screen name='ChooseThirst' component={ChooseThirst}/>
                 <Tab.Screen name='ScanningScreen' component={ScanningScreen}/>
                 <Tab.Screen name='ShoppingList' component={ShoppingList}/>
             </Tab.Navigator>

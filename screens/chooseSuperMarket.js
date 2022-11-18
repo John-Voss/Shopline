@@ -16,23 +16,23 @@ export default class ChooseSupermarket extends React.Component {
                 </View>
 
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=> this.props.navigation.navigate('Sede')}>
                         <Image source={require('../assets/condor.png')} style={styles.image} />
                     </TouchableOpacity>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=> this.props.navigation.navigate('Sede')}>
                         <Image source={require('../assets/festval.png')} style={styles.image} />
                     </TouchableOpacity>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=> this.props.navigation.navigate('Sede')}>
                         <Image source={require('../assets/carrefour.png')} style={styles.image} />
                     </TouchableOpacity>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=> this.props.navigation.navigate('Sede')}>
                         <Image source={require('../assets/walmart.png')} style={styles.image} />
                     </TouchableOpacity>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=> this.props.navigation.navigate('Sede')}>
                         <Image source={require('../assets/big.png')} style={styles.image} />
                     </TouchableOpacity>
                 </View>

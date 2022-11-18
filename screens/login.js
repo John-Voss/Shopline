@@ -13,7 +13,7 @@ export default class LoginScreen extends React.Component {
     this.state = {
       email: '',
       password: '',
-      transaction: [],
+      transaction: []
     }
   }
 
@@ -26,13 +26,16 @@ export default class LoginScreen extends React.Component {
           .then((userCredential) => {
             // Signed in 
             var user = userCredential.user;
-            this.props.navigation.navigate('DrawerNavigator');
+            this.props.navigation.navigate('StackNavigator');
             // ...
           })
           .catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
-            Alert.alert('Error '+errorCode+' Email ou senha inválidos!')
+            // Alert.alert('Error '+errorCode+' Email ou senha inválidos!')
+            Alert.alert(
+              'Error!',
+              'Email ou senha inválidos!')
             // ..
           });
     } else {
@@ -48,7 +51,6 @@ export default class LoginScreen extends React.Component {
   }
 
   render() {
-    const { email, password } = this.state;
     return (
       // <View style={styles.container}>
       //   <AppTitle />
@@ -91,7 +93,8 @@ export default class LoginScreen extends React.Component {
           />
           <TouchableOpacity
             style={[styles.button, { marginTop: 20 }]}
-            onPress={() => this.signIn(this.state.email, this.state.password)}
+            // onPress={() => this.signIn(this.state.email, this.state.password)}
+            onPress={() => this.props.navigation.navigate('StackNavigator')}
           >
             <Text style={styles.buttonText}>Entrar</Text>
           </TouchableOpacity>

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, Platform } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
+import MapView from 'react-native-maps';
 
 import AppTitle from '../components/AppHeader';
 
@@ -65,8 +66,6 @@ export default class ChooseThirst extends React.Component {
 
 
 
-
-
     render() {
         return (
             <View style={styles.container}>
@@ -77,23 +76,23 @@ export default class ChooseThirst extends React.Component {
                 </View>
 
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={()=> this.props.navigation.navigate('Início')}>
                         <Text style={styles.buttonText}>SEDE...</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={()=> this.props.navigation.navigate('Início')}>
                         <Text style={styles.buttonText}>SEDE...</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={()=> this.props.navigation.navigate('Início')}>
                         <Text style={styles.buttonText}>SEDE...</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={()=> this.props.navigation.navigate('Início')}>
                         <Text style={styles.buttonText}>SEDE...</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=> this.props.navigation.navigate('Mapa')}>
                         <Image source={require('../assets/location.png')} style={styles.location} />
                     </TouchableOpacity>
                 </View>
