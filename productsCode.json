@@ -1,0 +1,52 @@
+{
+    "A1001234":{
+        "price": 9.85,
+        "name": "MACARRÃO BARILA - SPAGHETTI",
+        "code": "A1001234"
+    },
+    "A1002345":{
+        "price": 10.75,
+        "name": "AÇUCAR UNIÃO",
+        "code": "A1002345"
+    },
+    "A1003456":{
+        "price": 8.85,
+        "name": "ARROZ TIO JOÃO",
+        "code": "A1003456"
+    },
+    "A1004567":{
+        "price": 15.00,
+        "name": "TRIGO ANACONDA 1KG",
+        "code": "A1004567"
+    },
+    "A1005678":{
+        "price": 3.25,
+        "name": "ÁGUA COM GÁS FONTE LIFE",
+        "code": "A1005678"
+    },
+    "A1006789":{
+        "price": 10.55,
+        "name": "FANDANGOS - SABOR PRESUNTO",
+        "code": "A1006789"
+    },
+    "A1007891":{
+        "price": 8.15,
+        "name": "LEITE NINHO 1,5L",
+        "code": "A1007891"
+    },
+    "A1008912":{
+        "price": 2.95,
+        "name": "COCA-COLA LATINHA - 200ML",
+        "code": "A1008912"
+    },
+    "A1009123":{
+        "price": 5.65,
+        "name": "CHOCOLATE NESTLE - AO LEITE",
+        "code": "A1009123"
+    },
+    "B1001234":{
+        "price": 7.85,
+        "name": "LEITE CONDENSADO MOÇA - 500ML",
+        "code": "B1001234"
+    }
+}

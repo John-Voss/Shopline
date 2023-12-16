@@ -48,6 +48,9 @@ export default class LoginScreen extends React.Component {
 
     }
 
+    this.props.navigation.navigate('Supermercado', {email: this.state.email})
+
+
   }
 
   render() {
@@ -93,8 +96,8 @@ export default class LoginScreen extends React.Component {
           />
           <TouchableOpacity
             style={[styles.button, { marginTop: 20 }]}
-            // onPress={() => this.signIn(this.state.email, this.state.password)}
-            onPress={() => this.props.navigation.navigate('StackNavigator')}
+            onPress={() => this.signIn(this.state.email, this.state.password)}
+            // onPress={() => this.props.navigation.navigate('StackNavigator')}
           >
             <Text style={styles.buttonText}>Entrar</Text>
           </TouchableOpacity>

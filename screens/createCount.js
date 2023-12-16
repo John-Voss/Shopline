@@ -12,12 +12,11 @@ export default class CreateCount extends React.Component {
             email: '',
             password: '',
             username: '',
-            transaction: [],
+            transaction: null,
             isUserExist: false,
             userId: ''
         }
     }
-
     createUser = async (email, password) => {
         if (this.state.email && this.state.password && this.state.username) {
             if(this.state.password.length >= 6){
@@ -35,7 +34,7 @@ export default class CreateCount extends React.Component {
                 .catch((error) => {
                     var errorCode = error.code;
                     var errorMessage = error.message;
-                    // ..
+                    // ...
                 });
             this.setState({
                 isUserExist: true
@@ -51,10 +50,10 @@ export default class CreateCount extends React.Component {
 
             await firebase
                 .database()
-                .ref('/users/'+this.state.userId)
+                .ref(this.state.userId)
                 .set(userData)
                 .then(function (snapshot) { });
-            this.props.navigation.navigate('DrawerNavigator');
+            this.props.navigation.navigate('StackNavigator');
         }else {
             Alert.alert(
                 'Error!',
@@ -64,7 +63,7 @@ export default class CreateCount extends React.Component {
             )
         }
         } else {
-            Alert.alert(
+             Alert.alert(
                 'Error!',
                 'Todos os campos são obrigatórios!',
                 [{ text: '', onPress: () => console.log('OK PRECIONADO!') }],
@@ -107,7 +106,7 @@ export default class CreateCount extends React.Component {
                     />
                     <TouchableOpacity
                         style={[styles.button, { marginTop: 20 }]}
-                        onPress={() => this.createUser(this.state.email, this.state.password)}
+                        onPress={()=> this.createUser(this.state.email, this.state.password)}
                     >
                         <Text style={styles.buttonText}>Criar</Text>
                     </TouchableOpacity>
