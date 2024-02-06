@@ -45,14 +45,14 @@ export default class Scanning extends React.Component{
     }
 
     getCameraPermission = async () => {
-        const { status } = await getCameraPermissionsAsync();
+        const { granted } = await getCameraPermissionsAsync();
 
-        if(status !== 'granted'){
+        if(!granted){
             await requestCameraPermissionsAsync();
         }
         this.setState({
             domState: 'canGo',
-            hasCameraPermissions: status === 'granted',
+            hasCameraPermissions: 'granted',
             scanned: false
         })
     }
@@ -69,7 +69,7 @@ export default class Scanning extends React.Component{
 
     render(){
         const { domState, scanned } = this.state;
-        if (domState != 'normal') {
+        if (domState === 'canGo') {
             return (
                 <BarCodeScanner
                     onBarCodeScanned={scanned ? undefined : this.handleBarCodeScanned}
